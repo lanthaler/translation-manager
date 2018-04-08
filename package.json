@@ -1,0 +1,70 @@
+{
+    "name": "translation-manager",
+    "displayName": "translation-manager",
+    "description": "Manage your localized messages right from Visual Studio Code.",
+    "version": "1.0.0",
+    "publisher": "lanthaler",
+    "homepage": "http://www.markus-lanthaler.com/",
+    "author": {
+        "name": "Markus Lanthaler"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "Github",
+        "url": "https://github.com/lanthaler/translation-manager"
+    },
+    "engines": {
+        "vscode": "^1.17.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:translationManager.addLocalizedMessage"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "translationManager.addLocalizedMessage",
+                "title": "Add localized message",
+                "category": "Translation Manager"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Translation Manager configuration",
+            "properties": {
+                "translationManager.localeFolder": {
+                    "type": "string",
+                    "default": "i18n/messages/",
+                    "description": "The path to the locale folder (relative to the workspace root)."
+                }
+            }
+        },
+        "keybindings": [
+            {
+                "command": "translationManager.addLocalizedMessage",
+                "key": "shift+alt+l",
+                "when": "editorTextFocus"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "@types/node": "^9.0.0",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
+    },
+    "dependencies": {
+        "@types/jsonfile": "^4.0.1",
+        "@types/lodash": "^4.14.106",
+        "@types/request": "0.0.45",
+        "jsonfile": "^4.0.0",
+        "lodash": "^4.17.5"
+    }
+}
